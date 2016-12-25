@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 # Copyright (c) 2016 Precious Kindo
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-import time, urllib
-#import json, requests
+import sys, time, urllib
+import json, requests
 
 version = '1.0.0'
 
@@ -47,6 +47,9 @@ class KongaOauth():
         # Get (optional) key...
         if kwargs.has_key('is_test'):
             self.__is_test = kwargs['is_test']
+
+    def versionInfo(self):
+        sys.stderr.write("Using KongaPay Python version:%s\n" % (version))
 
     def KPUrl(self):
         return 'https://staging-auth.kongapay.com' if self.__is_test else 'https://auth.kongapay.com'
